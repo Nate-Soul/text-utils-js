@@ -2,58 +2,35 @@
 
 ## Overview
 
-This repository contains two useful functions, `generateSlug()` and `makeExcerpt()`, that can simplify certain text operations in your JavaScript projects. This document provides an overview of these functions and explains how to use them effectively.
+# Dynamic Slug and Excerpt Generator
 
-## Table of Contents
-- [Functions](#functions)
-  - [generateSlug()](#generateslug)
-  - [makeExcerpt()](#makeexcerpt)
-- [Usage](#usage)
-  - [Generating Slugs](#generating-slugs)
-  - [Creating Excerpts](#creating-excerpts)
+This JavaScript code is a dynamic utility for generating slugs and excerpts based on user inputs in a web form. It is designed to enhance the user experience when creating content, such as articles or blog posts.
 
-## Functions
+## Features
 
-### `generateSlug()`
+- **Slug Generation**: When a title is entered into the "Title" field, the code automatically generates a URL-friendly slug in the "Slug" field. This slug is created by converting the title to lowercase, removing non-alphanumeric characters, and applying customizable transformations such as removing unwanted keywords and replacing spaces with a specified delimiter.
 
-The `generateSlug()` function converts a given string into a URL-friendly slug. It removes non-alphanumeric characters, converts the string to lowercase, replaces spaces with a specified delimiter, and trims any leading or trailing delimiters.
+- **Excerpt Creation**: When the focus is removed from the "Body" field, the code generates an excerpt in the "Excerpt" field. The excerpt is created by trimming the body text and limiting its length to a specified character count, with an optional ellipsis at the end.
 
-**Syntax:**
+- **Customization**: The code allows customization of the slug generation by specifying whether to allow or disallow non-ASCII characters, defining unwanted keywords to be removed from slugs, and selecting the delimiter for slug creation.
 
-const slug = generateSlug(string, delimiter = "-", unwanted_keywords = ["and", "of"]);
+## Usage
 
-Parameters:
+Integrate this code into your web forms for content creation, such as articles, blog posts, or any other content that requires slugs and excerpts. Here's a sample HTML structure for using this code:
 
-string: The input string to generate a slug from.
-delimiter (optional): The character(s) used to separate words in the slug. Default is "-".
-unwanted_keywords (optional): An array of keywords to be removed from the slug. Default is ["and", "of"].
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Add CSS styling for input fields and elements -->
+</head>
+<body>
+    <input id="title" type="text" placeholder="Title">
+    <input id="slug" type="text" placeholder="Slug">
+    <textarea id="body" placeholder="Body"></textarea>
+    <textarea id="excerpt" placeholder="Excerpt"></textarea>
 
-Returns:
+    <script src="slug-and-excerpt-generator.js"></script>
+</body>
+</html>
 
-A string representing the generated slug.
-
-### `makeExcerpt()`
-The makeExcerpt() function generates a shortened excerpt from a given text. It truncates the text to a specified length and appends an ellipsis if necessary.
-
-**Syntax:**
-const excerpt = makeExcerpt(string, len = 50);
-
-Parameters:
-
-string: The input text to create an excerpt from.
-len (optional): The maximum length of the excerpt. Default is 50.
-Returns:
-
-A string representing the generated excerpt.
-Usage
-Generating Slugs
-To generate a slug from a string, call the generateSlug() function and provide the input string as the first argument. Optionally, you can specify the delimiter and unwanted keywords.
-
-const slug = generateSlug("Hello World!"); // Output: "hello-world"
-
-const slug = generateSlug("Hello World!", "_", ["world"]); // Output: "hello"
-
-Creating Excerpts
-To create an excerpt from a text, use the makeExcerpt() function and pass the input text as the first argument. You can also specify the desired length of the excerpt.
-
-Remember to import or include these functions in your JavaScript project before using them.
