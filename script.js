@@ -23,7 +23,28 @@ const makeExcerpt = (string, len = 50) => {
     return string;
 };
 
-function generateSlug(input, allowUnicode = false, unwanted_keywords = ["and", "of"], delimiter = "-") {
+const generateSlug = (
+  input, 
+  allowUnicode = false, 
+  unwanted_keywords = [
+    "and", 
+    "of", 
+    "a",
+    "an",
+    "the",
+    "but",
+    "or",
+    "for",
+    "in",
+    "with",
+    "is",
+    "it",
+    "to",
+    "how",
+    "what",
+  ],
+  delimiter = "-"
+) => {
 
   if (!input || typeof input !== "string") {
     return "";
@@ -54,24 +75,4 @@ function generateSlug(input, allowUnicode = false, unwanted_keywords = ["and", "
   }
 
   return slug;
-}
-
-
-// const createSlug = (string, delimiter = "-", unwanted_keywords = ["and", "of"]) => {
-//     if (!string) {
-//       return "";
-//     }
-  
-//     const slug = string
-//       .toString()
-//       .trim() 
-//       .toLowerCase()
-//       .replace(/[^a-zA-Z0-9\s-]+/g, "")
-//       .split(" ")
-//       .filter(word => !unwanted_keywords.includes(word))
-//       .join(delimiter)
-//       .replace(/-+/g, delimiter)
-//       .replace(/^-*|-*$/g, "");
-  
-//     return slug;
-// };
+};
