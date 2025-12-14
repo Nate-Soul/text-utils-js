@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slugifier - URL Slug Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./static/css/style.css">
+    <link rel="stylesheet" href="./static/css/slug-maker.css">
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="page-title">
+        <i class="fa-solid fa-link"></i>
+        Slugifier
+      </h1>
+
+      <!-- Input Card -->
+      <div class="card">
+        <label for="originalText" class="label">Your Original Text</label>
+        <div class="input-container">
+          <textarea id="originalText" class="text-area">How to Create a Clean URL Slug from Any Text</textarea>
+          <button id="clearButton" class="clear-button visible" aria-label="Clear text">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Settings Card -->
+      <div class="card">
+        <h2 class="settings-header">Settings</h2>
+
+        <div class="setting-group">
+          <span class="label">Choose Delimiter</span>
+          <div class="custom-select-container">
+            <div id="customSelect" class="custom-select" tabindex="0" role="button" aria-haspopup="listbox" aria-expanded="false">
+              <span id="customSelectValue">Dash (-)</span>
+              <i class="fa-solid fa-chevron-down custom-select-chevron"></i>
+            </div>
+            <div id="customSelectDropdown" class="custom-select-dropdown" role="listbox">
+              <div class="custom-select-option selected" data-label="Dash (-)" data-value="-" role="option">
+                <span>Dash (-)</span>
+                <i class="fa-solid fa-check custom-select-option-check"></i>
+              </div>
+              <div class="custom-select-option" data-label="Underscore (_)" data-value="_" role="option">
+                <span>Underscore (_)</span>
+                <i class="fa-solid fa-check custom-select-option-check"></i>
+              </div>
+              <div class="custom-select-option" data-label="Em Dash (—)" data-value="—" role="option">
+                <span>Em Dash (—)</span>
+                <i class="fa-solid fa-check custom-select-option-check"></i>
+              </div>
+              <div class="custom-select-option" data-label="En Dash (–)" data-value="–" role="option">
+                <span>En Dash (–)</span>
+                <i class="fa-solid fa-check custom-select-option-check"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="setting-group">
+          <div class="toggle-option">
+            <span class="toggle-label">Remove Numbers</span>
+            <label class="toggle-switch">
+              <input type="checkbox" id="removeNumbers">
+              <span class="toggle-switch-label"></span>
+            </label>
+          </div>
+
+          <div class="toggle-option">
+            <span class="toggle-label">Allow Unicode</span>
+            <label class="toggle-switch">
+              <input type="checkbox" id="allowUnicode">
+              <span class="toggle-switch-label"></span>
+            </label>
+          </div>
+
+          <div class="toggle-option">
+            <span class="toggle-label">Exclude Stop Words</span>
+            <label class="toggle-switch">
+              <input type="checkbox" id="excludeStopWords" checked="">
+              <span class="toggle-switch-label"></span>
+            </label>
+          </div>
+
+          <!-- Expandable section for added stop words badges -->
+          <div id="stopWordsBadgeSection" class="stop-words-badge-section expanded">
+            <label class="label">Added Stop Words</label>
+            <div id="badgeContainer" class="badge-container"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Customization Card -->
+      <div class="card">
+        <label for="customStopWords" class="label">Add Custom Stop Words</label>
+        <input type="text" id="customStopWords" class="text-input" placeholder="e.g., a, an, the, in">
+        <p class="helper-text">
+          You can include or remove stop words here using comma separated values
+        </p>
+      </div>
+
+      <!-- Output Card with tight spacing class -->
+      <div class="card output-card">
+        <label for="generatedSlug" class="label">Generated URL Slug</label>
+        <div class="output-container">
+          <input type="text" id="generatedSlug" class="text-input output-field" value="create-clean-url-slug-text" readonly="">
+          <button id="copyButton" class="copy-button" aria-label="Copy slug">
+            <i class="fa-solid fa-copy"></i>
+          </button>
+          <div id="copyTooltip" class="copy-tooltip">Copied!</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Action Buttons Fixed Footer -->
+    <div class="action-buttons-footer">
+      <button id="resetFormButton" class="button secondary">Reset Form</button>
+    </div>
+
+    <script src="./static/js/slug-maker.js"></script>
+</body>
+</html>

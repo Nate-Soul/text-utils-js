@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Excerpt Maker - TextTools</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="./static/css/style.css">
+        <link rel="stylesheet" href="./static/css/excerpt-maker.css">
+</head>
+<body>
+    <section class="container">
+        <!-- Page Title -->
+        <h1 class="page-title">
+            <i class="fas fa-scissors"></i>
+            Excerpt Maker
+        </h1>
+
+        <!-- Input Card -->
+        <div class="card">
+            <div class="label-row">
+                <span class="label">Original Content</span>
+                <span class="char-counter" id="charCounter">0 / 5000 characters</span>
+            </div>
+            <div class="input-container">
+                <textarea class="text-area" id="inputText" placeholder="Paste your long-form content here..." maxlength="5000"></textarea>
+                <button class="clear-button" id="clearInputButton">
+                    <i class="fas fa-xmark"></i>
+                </button>
+            </div>
+            <p class="helper-text" id="helperText">Paste or type your content to generate an excerpt</p>
+        </div>
+
+        <!-- Settings Card -->
+        <div class="card">
+            <h2 class="section-header">Excerpt Settings</h2>
+            
+            <!-- Word Count Slider -->
+            <div class="mb-20">
+                <div class="label mb-10" style="margin-bottom: 10px;">Target Word Count</div>
+                <div class="slider-container">
+                    <input type="range" id="wordCountSlider" min="10" max="500" value="50" step="5">
+                </div>
+                <div class="slider-value" id="sliderValue">50 words</div>
+            </div>
+
+            <!-- Excerpt Type -->
+            <div class="mb-20">
+                <div class="label" style="margin-bottom: 10px;">Excerpt Type</div>
+                <div class="radio-group">
+                    <label class="radio-option">
+                        <input type="radio" name="excerptType" value="smart" checked="">
+                        <div class="radio-label">
+                            <span class="radio-title">Smart Detection</span>
+                            <span class="radio-description">Intelligently breaks at sentence boundaries</span>
+                        </div>
+                    </label>
+                    <label class="radio-option">
+                        <input type="radio" name="excerptType" value="fixed">
+                        <div class="radio-label">
+                            <span class="radio-title">Fixed Length</span>
+                            <span class="radio-description">Cuts at exact word count</span>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Additional Options -->
+            <div class="mb-20">
+                <div class="label" style="margin-bottom: 10px;">Options</div>
+                <div class="checkbox-group">
+                    <label class="checkbox-option">
+                        <input type="checkbox" id="addEllipsis" checked="">
+                        <span class="checkbox-label">Add ellipsis (...)</span>
+                    </label>
+                    <label class="checkbox-option">
+                        <input type="checkbox" id="preserveFormatting">
+                        <span class="checkbox-label">Preserve formatting</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- Generate Button -->
+            <button class="generate-button" id="generateButton" disabled="">
+                <i class="fas fa-wand-magic-sparkles"></i>
+                Generate Excerpt
+            </button>
+        </div>
+
+        <!-- Output Card -->
+        <div class="card">
+            <div class="label-row">
+                <span class="label">Generated Excerpt</span>
+                <span class="char-counter" id="wordCounter">0 words</span>
+            </div>
+            <div class="output-container">
+                <textarea class="text-area output-area" id="outputText" readonly=""></textarea>
+                <button class="copy-button" id="copyButton">
+                    <i class="fas fa-copy"></i>
+                </button>
+                <div class="copy-tooltip" id="copyTooltip">Copied!</div>
+            </div>
+            
+            <!-- Statistics -->
+            <div class="statistics-row" data-mc-element-id="17525">
+                <span class="stat-badge" id="charStat">Characters: 0</span>
+                <span class="stat-badge" id="sentenceStat">Sentences: 0</span>
+                <span class="stat-badge" id="compressionStat">Compression: 0%</span>
+            </div>
+        </div>
+    </section>
+    <script src="./static/js/excerpt-maker.js"></script>
+</body>
+</html>

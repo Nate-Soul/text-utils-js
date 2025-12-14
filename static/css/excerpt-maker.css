@@ -1,0 +1,449 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    min-height: 1280px;
+}
+
+.container {
+    width: 100%;
+    max-width: 430px;
+    padding: 0 20px;
+}
+
+/* Page Title */
+.page-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 24px;
+}
+
+.page-title i {
+    color: var(--purple);
+}
+
+/* Card Styling */
+.card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 28px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Labels */
+.label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.label {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.section-header {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 20px;
+}
+
+/* Character Counter Badge */
+.char-counter {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 6px 10px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+/* Input/Output Container */
+.input-container,
+.output-container {
+    position: relative;
+}
+
+/* Text Areas */
+.text-area {
+    width: 100%;
+    min-height: 140px;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px;
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    resize: vertical;
+    transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.text-area::placeholder {
+    color: var(--text-muted);
+}
+
+.text-area:focus {
+    outline: 2px solid var(--purple);
+    outline-offset: 2px;
+    border-color: transparent;
+}
+
+.output-area {
+    min-height: 120px;
+    background-color: var(--bg-primary);
+    padding-right: 48px;
+}
+
+.output-area:read-only {
+    cursor: default;
+}
+
+.output-area:empty::before {
+    content: 'Your excerpt will appear here...';
+    color: var(--text-muted-dark);
+}
+
+/* Clear Button */
+.clear-button {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.clear-button.visible {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.clear-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.clear-button:active {
+    transform: scale(0.95);
+}
+
+/* Helper Text */
+.helper-text {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin-top: 8px;
+    line-height: 1.5;
+}
+
+.error-text {
+    color: var(--error);
+}
+
+/* Word Count Slider */
+.slider-container {
+    position: relative;
+    margin-bottom: 8px;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.1);
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--purple);
+    border: 2px solid var(--text-primary);
+    box-shadow: 0 2px 8px rgba(139, 92, 246, 0.4);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+    background: var(--purple-dark);
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--purple);
+    border: 2px solid var(--text-primary);
+    box-shadow: 0 2px 8px rgba(139, 92, 246, 0.4);
+    cursor: pointer;
+}
+
+.slider-value {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--purple);
+    margin-top: 8px;
+}
+
+/* Radio Options */
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.radio-option {
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+}
+
+.radio-option input[type="radio"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-top: 2px;
+    position: relative;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.radio-option input[type="radio"]:checked {
+    border-color: var(--purple);
+    border-width: 2px;
+}
+
+.radio-option input[type="radio"]:checked::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--purple);
+}
+
+.radio-label {
+    display: flex;
+    flex-direction: column;
+}
+
+.radio-title {
+    font-size: 15px;
+    color: var(--text-primary);
+}
+
+.radio-description {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+/* Checkbox Options */
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.checkbox-option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.checkbox-option input[type="checkbox"] {
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    margin-right: 10px;
+    position: relative;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.checkbox-option input[type="checkbox"]:checked {
+    background: var(--purple);
+    border-color: var(--purple);
+}
+
+.checkbox-option input[type="checkbox"]:checked::after {
+    content: '\f00c';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--text-primary);
+    font-size: 10px;
+}
+
+.checkbox-label {
+    font-size: 15px;
+    color: var(--text-primary);
+}
+
+/* Generate Button */
+.generate-button {
+    width: 100%;
+    height: 52px;
+    background-color: var(--purple);
+    color: var(--text-primary);
+    border: none;
+    border-radius: 12px;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.2s ease-in-out;
+}
+
+.generate-button:disabled {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-muted-dark);
+    cursor: not-allowed;
+}
+
+.generate-button:not(:disabled):hover {
+    background: var(--purple-dark);
+    transform: scale(1.02);
+}
+
+.generate-button:not(:disabled):active {
+    transform: scale(0.98);
+}
+
+/* Copy Button */
+.copy-button {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background-color: var(--purple);
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease-in-out;
+}
+
+.copy-button:hover {
+    background-color: var(--purple-dark);
+    transform: translateY(-50%) scale(1.05);
+}
+
+.copy-button:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+/* Copy Tooltip */
+.copy-tooltip {
+    position: absolute;
+    bottom: calc(100% + 8px);
+    right: 0;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease-in-out;
+    white-space: nowrap;
+}
+
+.copy-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    right: 12px;
+    border: 4px solid transparent;
+    border-top-color: var(--bg-secondary);
+}
+
+.copy-tooltip.show {
+    opacity: 1;
+    animation: tooltipFadeIn 0.2s ease-out;
+}
+
+@keyframes tooltipFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Statistics */
+.statistics-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.stat-badge {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 6px 12px;
+    border-radius: 10px;
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+/* Spacing utilities */
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}

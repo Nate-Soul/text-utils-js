@@ -1,0 +1,647 @@
+:root {
+  --border-color: rgba(255, 255, 255, 0.08); /* Renamed to avoid conflict with existing --border-color */
+  --card-element-bg: rgba(255, 255, 255, 0.1);
+  --card-element-hover-bg: rgba(255, 255, 255, 0.2);
+  --placeholder-color: #9ca3af; /* Muted gray for placeholders */
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0 0 0; /* Tight spacing with fixed footer */
+  min-height: 1400px; /* Ensure sufficient height for content */
+}
+
+/* Transitions for interactive elements */
+button,
+a,
+input,
+select,
+textarea,
+.card,
+.toggle-switch-label,
+.stop-word-badge,
+.clear-button,
+.output-clear-button,
+.copy-button,
+.custom-select,
+.custom-select-option {
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out,
+    background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.2s ease-in-out,
+    opacity 0.2s ease-in-out;
+}
+
+/* Layout & Container */
+.container {
+  width: 100%;
+  max-width: 430px;
+  padding: 0 20px 110px 20px; /* Account for fixed footer height */
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* Page Title */
+.page-title {
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--text-primary); /* White labels */
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.page-title i {
+  color: var(--purple); /* Accent color for icon */
+}
+
+/* Card Styling */
+.card {
+  background-color: var(--bg-secondary); /* Darker cards */
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Dark theme shadow */
+  padding: 20px;
+  border: 1px solid var(--border-color); /* Subtle border */
+}
+
+/* Specific margin for output card to create tight spacing */
+.output-card {
+  margin-bottom: 16px;
+}
+
+/* Labels */
+.label {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text-primary); /* White labels */
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* Helper Text */
+.helper-text {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-muted); /* Muted gray for helper text */
+  line-height: 1.5;
+  margin-top: 8px;
+}
+
+/* Input/Output Fields */
+.text-input,
+.text-area {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid var(--border-color); /* Subtle border */
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif; /* Apply new font family */
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--text-primary); /* White text */
+  background-color: var(--bg-secondary); /* Dark background for inputs */
+}
+
+.text-input {
+  height: 52px;
+}
+
+.text-area {
+  min-height: 140px;
+  resize: vertical;
+}
+
+.text-input::placeholder,
+.text-area::placeholder {
+  color: var(--placeholder-color); /* Muted placeholder */
+}
+
+.text-input:focus,
+.text-area:focus {
+  outline: 2px solid var(--purple); /* Purple focus ring */
+  outline-offset: 2px;
+  border-color: transparent;
+}
+
+/* Output Field specific */
+.output-field {
+  background-color: var(--bg-primary); /* Darker background for read-only */
+}
+
+/* Input Container for positioning clear button */
+.input-container {
+  position: relative;
+}
+
+/* Clear button in textarea */
+.clear-button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background-color: var(--card-element-bg); /* Lighter dark for button */
+  border: none;
+  color: var(--text-primary); /* White icon */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  pointer-events: auto;
+  font-size: 14px;
+}
+
+.clear-button.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.clear-button:hover {
+  background-color: var(--card-element-hover-bg); /* Darker hover */
+  transform: scale(1.05);
+}
+
+.clear-button:active {
+  transform: scale(0.95);
+}
+
+/* Output Container for positioning copy and clear buttons */
+.output-container {
+  position: relative;
+}
+
+.output-container .text-input {
+  padding-right: 88px; /* Maintain spacing */
+}
+
+/* Clear button in output field */
+.output-clear-button {
+  position: absolute;
+  top: 10px;
+  right: 52px;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background-color: var(--card-element-bg); /* Lighter dark for button */
+  border: none;
+  color: var(--text-primary); /* White icon */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.output-clear-button.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.output-clear-button:hover {
+  background-color: var(--card-element-hover-bg); /* Darker hover */
+  transform: scale(1.05);
+}
+
+.output-clear-button:active {
+  transform: scale(0.95);
+}
+
+/* Copy button in output field */
+.copy-button {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background-color: var(--purple); /* Purple primary button */
+  border: none;
+  color: var(--text-primary); /* White icon */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.copy-button:hover {
+  background-color: var(--purple-dark); /* Darker purple hover */
+  transform: translateY(-50%) scale(1.05);
+}
+
+.copy-button:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.copy-button:focus {
+  outline: 2px solid var(--purple); /* Purple focus */
+  outline-offset: 2px;
+}
+
+/* Copy tooltip */
+.copy-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  right: 0;
+  background-color: var(--bg-secondary); /* Dark tooltip */
+  color: var(--text-primary); /* White text */
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.copy-tooltip.show {
+  opacity: 1;
+}
+
+.copy-tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  right: 12px;
+  border: 4px solid transparent;
+  border-top-color: var(--bg-secondary); /* Arrow color same as tooltip bg */
+}
+
+/* Settings Card specific */
+.settings-header {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-primary); /* White labels */
+  margin-bottom: 20px;
+}
+
+.setting-group {
+  margin-bottom: 20px;
+}
+
+.setting-group:last-of-type {
+  margin-bottom: 0;
+}
+
+/* Custom Select Dropdown Styles */
+.custom-select-container {
+  position: relative;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.custom-select {
+  position: relative;
+  width: 100%;
+  height: 52px;
+  padding: 0 48px 0 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  background-color: var(--bg-secondary); /* Dark background */
+  font-family: 'Inter', sans-serif; /* Apply new font family */
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--text-primary); /* White text */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  user-select: none;
+}
+
+.custom-select:hover {
+  border-color: var(--purple); /* Purple highlight on hover */
+}
+
+.custom-select.open {
+  border-color: var(--purple); /* Purple border when open */
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2); /* Purple shadow */
+}
+
+.custom-select:focus {
+  outline: 2px solid var(--purple); /* Purple focus */
+  outline-offset: 2px;
+  border-color: transparent;
+}
+
+.custom-select-chevron {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 14px;
+  color: var(--text-muted); /* Muted gray chevron */
+  pointer-events: none;
+  transition: transform 0.2s ease-in-out;
+}
+
+.custom-select.open .custom-select-chevron {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+/* Dropdown Menu */
+.custom-select-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background-color: var(--bg-secondary); /* Dark background */
+  border: 1px solid var(--border-color); /* Subtle border */
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Dark shadow */
+  z-index: 10;
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transition: max-height 0.2s ease-in-out, opacity 0.2s ease-in-out;
+}
+
+.custom-select-dropdown.open {
+  max-height: 250px;
+  opacity: 1;
+}
+
+.custom-select-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 48px;
+  padding: 0 16px;
+  font-family: 'Inter', sans-serif; /* Apply new font family */
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--text-primary); /* White text */
+  cursor: pointer;
+}
+
+.custom-select-option:hover {
+  background-color: rgba(255, 255, 255, 0.05); /* Subtle dark hover */
+}
+
+.custom-select-option.selected {
+  color: var(--purple); /* Purple selected text */
+}
+
+.custom-select-option-check {
+  font-size: 14px;
+  color: var(--purple); /* Purple checkmark */
+  opacity: 0;
+  transition: opacity 0.15s ease-in-out;
+}
+
+.custom-select-option.selected .custom-select-option-check {
+  opacity: 1;
+}
+
+/* Toggle Switches */
+.toggle-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.toggle-option:last-of-type {
+  margin-bottom: 0;
+}
+
+.toggle-label {
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--text-primary); /* White labels */
+  font-family: 'Inter', sans-serif; /* Apply new font family */
+}
+
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-switch-label {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--border-color); /* Inactive toggle background */
+  border-radius: 34px;
+}
+
+.toggle-switch-label:before {
+  position: absolute;
+  content: '';
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: rgba(255, 255, 255, 0.9); /* Toggle circle slightly off-white */
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Darker shadow for knob */
+  transition: transform 0.2s ease-in-out;
+}
+
+input:checked + .toggle-switch-label {
+  background-color: var(--purple); /* Active toggle purple */
+}
+
+input:checked + .toggle-switch-label:before {
+  transform: translateX(26px);
+}
+
+input:focus + .toggle-switch-label {
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.3); /* Purple focus shadow */
+}
+
+/* Expandable section for added stop words badges */
+.stop-words-badge-section {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out, margin-top 0.3s ease-in-out;
+  margin-top: 0;
+}
+
+.stop-words-badge-section.expanded {
+  max-height: 1000px; /* Adjust as needed */
+  margin-top: 16px;
+}
+
+/* Stop word badges */
+.badge-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.stop-word-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  padding: 0 8px 0 12px;
+  background-color: var(--card-element-bg); /* Lighter dark for badge */
+  color: var(--text-primary); /* White text */
+  border-radius: 16px;
+  font-family: 'Inter', sans-serif; /* Apply new font family */
+  font-size: 14px;
+  font-weight: 400;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.stop-word-badge.removing {
+  animation: fadeOut 0.2s ease-in-out forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+.stop-word-badge:hover {
+  background-color: var(--card-element-hover-bg); /* Darker hover */
+  transform: scale(1.05);
+}
+
+.stop-word-badge .badge-text {
+  flex: 1;
+}
+
+.stop-word-badge .remove-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--text-primary); /* White icon */
+  opacity: 0.6;
+  border-radius: 50%;
+  font-size: 12px;
+  transition: opacity 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.stop-word-badge .remove-icon:hover {
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.1); /* Subtle hover for remove icon */
+}
+
+/* Action Buttons Fixed Footer */
+.action-buttons-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--bg-secondary); /* Dark footer */
+  padding: 20px;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 430px;
+  margin: 0 auto;
+  z-index: 100;
+}
+
+.button {
+  width: 100%;
+  height: 52px;
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif; /* Apply new font family */
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.button.secondary {
+  background-color: transparent;
+  color: var(--text-primary); /* White text */
+  border: 1px solid var(--border-color); /* Subtle border for secondary */
+}
+
+.button.secondary:hover {
+  background-color: var(--card-element-bg); /* Subtle hover */
+  border-color: var(--text-primary); /* White border on hover */
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Darker shadow */
+}
+
+.button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.button:focus {
+  outline: 2px solid var(--purple); /* Purple focus */
+  outline-offset: 2px;
+}
+
+/* Responsive Adjustments */
+@media (min-width: 768px) {
+  body {
+    padding-top: 40px;
+  }
+
+  .container {
+    max-width: 768px;
+    padding: 0 30px 110px 30px;
+  }
+
+  .page-title {
+    font-size: 32px;
+    margin-bottom: 0;
+  }
+
+  .action-buttons-footer {
+    max-width: 768px;
+    padding: 24px 30px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 900px;
+  }
+
+  .action-buttons-footer {
+    max-width: 900px;
+  }
+}

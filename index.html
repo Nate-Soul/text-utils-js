@@ -1,39 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+    <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slug Generator</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <title>TextTools - Essential Tools for the Digital Workforce</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./static/css/style.css">
+    <link rel="stylesheet" href="./static/css/index.css">
 </head>
 <body>
-    <main>
-        <section class="py-5 bg-light">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 mx-auto">
-                        <div class="mb-3">
-                            <label for="title" class="form-label">Enter title</label>
-                            <input type="text" name="title" id="title" class="form-control"/>
-                        </div>
-                        <div class="mb-3">
-                            <label for="slug" class="form-label">Generated web safe URL</label>
-                            <input type="text" name="slug" id="slug" class="form-control"/>
-                        </div>
-                        <div class="mb-3">
-                            <label for="body" class="form-label">Content</label>
-                            <textarea name="body" id="body" class="form-control" rows="9"></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label for="excerpt" class="form-label">Generated excerpt</label>
-                            <textarea name="excerpt" id="excerpt" class="form-control" rows="4"></textarea>
-                        </div>
+    <!-- Navigation -->
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <div class="logo">
+                Text<span class="logo-highlight">Tools</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#tools">Tools</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="hero-container">
+            <h1 class="hero-headline">Essential tools for the digital workforce.</h1>
+            <p class="hero-subheading">Simplify, transform, and enhance your text — built to be fast, clean, and dependable.</p>
+            <div class="cta-buttons">
+                <a href="#tools" class="btn btn-primary">Explore Tools</a>
+                <a href="#about" class="btn btn-secondary">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Internal Tools Section -->
+    <section class="section" id="tools">
+        <h2 class="section-header">Text Tools</h2>
+        <p class="section-description">Transform and optimize your text content with our specialized tools</p>
+        
+        <div class="tools-grid">
+            <!-- Slugifier -->
+            <div class="tool-card">
+                <div class="tool-icon-container">
+                    <i class="fas fa-link"></i>
+                </div>
+                <div class="tool-card-header">
+                    <h3 class="tool-title">Slugifier</h3>
+                </div>
+                <p class="tool-description">Convert any text into clean, web-safe URL slugs with customizable delimiters and stop word filtering</p>
+                <a href="./slug-maker.html" class="tool-action">
+                    Launch Tool <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Excerpt Maker -->
+            <div class="tool-card">
+                <div class="tool-icon-container">
+                    <i class="fas fa-scissors"></i>
+                </div>
+                <div class="tool-card-header">
+                    <h3 class="tool-title">Excerpt Maker</h3>
+                </div>
+                <p class="tool-description">Generate concise excerpts from long-form content with intelligent word count and sentence boundary detection</p>
+                <a href="./excerpt-maker.html" class="tool-action">
+                    Launch Tool <i class="fas fa-arrow-right" data-mc-element-id="15336"></i>
+                </a>
+            </div>
+
+            <!-- Word Counter -->
+            <div class="tool-card coming-soon">
+                <span class="coming-soon-badge">Coming Soon</span>
+                <div class="tool-icon-container coming-soon">
+                    <i class="fas fa-calculator"></i>
+                </div>
+                <div class="tool-card-header">
+                    <h3 class="tool-title">Word Counter</h3>
+                </div>
+                <p class="tool-description">Count words, characters, sentences, and paragraphs with detailed reading time estimates</p>
+            </div>
+
+            <!-- Text Formatter -->
+            <div class="tool-card coming-soon">
+                <span class="coming-soon-badge">Coming Soon</span>
+                <div class="tool-icon-container coming-soon">
+                    <i class="fas fa-text-height"></i>
+                </div>
+                <div class="tool-card-header">
+                    <h3 class="tool-title">Text Formatter</h3>
+                </div>
+                <p class="tool-description">Format text with case conversion, spacing adjustment, and special character handling</p>
+            </div>
+
+            <!-- Markdown Converter -->
+            <div class="tool-card coming-soon">
+                <span class="coming-soon-badge">Coming Soon</span>
+                <div class="tool-icon-container coming-soon">
+                    <i class="fab fa-markdown"></i>
+                </div>
+                <div class="tool-card-header">
+                    <h3 class="tool-title">Markdown Converter</h3>
+                </div>
+                <p class="tool-description">Convert between Markdown, HTML, and plain text with preview and syntax highlighting</p>
+            </div>
+
+            <!-- Case Converter -->
+            <div class="tool-card coming-soon">
+                <span class="coming-soon-badge">Coming Soon</span>
+                <div class="tool-icon-container coming-soon">
+                    <i class="fas fa-font"></i>
+                </div>
+                <div class="tool-card-header">
+                    <h3 class="tool-title">Case Converter</h3>
+                </div>
+                <p class="tool-description">Transform text between different case styles including camelCase, snake_case, and more</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- External Tools Section -->
+    <section class="section" id="externalTools">
+        <h2 class="section-header">External Tools</h2>
+        <p class="section-description">Explore our curated collection of essential productivity tools</p>
+        
+        <div class="tools-grid">
+            <!-- Password Generator -->
+            <div class="tool-card external">
+                <div class="tool-icon-container external">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <div class="tool-card-header">
+                    <h3 class="tool-title">
+                        Password Generator
+                        <i class="fas fa-external-link-alt external-icon"></i>
+                    </h3>
+                </div>
+                <p class="tool-description">Generate secure, random passwords with customizable length and character requirements</p>
+                <a target="_blank" href="https://passwordgenbynatesoul.netlify.app" class="tool-action external">
+                    Open Tool <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Statistical Calculator -->
+            <div class="tool-card external">
+                <div class="tool-icon-container external">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <div class="tool-card-header">
+                    <h3 class="tool-title">
+                        Statistical Calculator
+                        <i class="fas fa-external-link-alt external-icon"></i>
+                    </h3>
+                </div>
+                <p class="tool-description">Perform complex statistical calculations including mean, median, standard deviation, and more</p>
+                <a target="_blank" href="https://datanalyzerpro.netlify.app" class="tool-action external">
+                    Open Tool <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+
+            <!-- Loan Calculator -->
+            <div class="tool-card external">
+                <div class="tool-icon-container external">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="tool-card-header">
+                    <h3 class="tool-title">
+                        Loan Calculator
+                        <i class="fas fa-external-link-alt external-icon"></i>
+                    </h3>
+                </div>
+                <p class="tool-description">Calculate loan payments, interest rates, and amortization schedules with detailed breakdowns</p>
+                <a target="_blank" href="https://theloancalc.netlify.app" class="tool-action external">
+                    Open Tool <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-brand">TextTools</div>
+                    <p class="footer-tagline">Simple tools for modern workflows</p>
+                </div>
+                
+                <div>
+                    <div class="footer-links-header">Quick Links</div>
+                    <ul class="footer-links">
+                        <li><a href="#tools">All Tools</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#privacy">Privacy</a></li>
+                        <li><a href="#terms">Terms</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <div class="footer-links-header">Connect</div>
+                    <div class="social-links">
+                        <a href="https://github.com/Nate-Soul" class="social-link" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://x.com/Nate_Ukpong" class="social-link" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="mailto:natesoul.dev@gmail.com" class="social-link" aria-label="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
-    <script src="./script.js"></script>
+            
+            <div class="footer-bottom">
+                © 2024 TextTools. Built for productivity.
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
