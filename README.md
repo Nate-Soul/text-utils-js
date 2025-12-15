@@ -1,50 +1,127 @@
-# text-utils-js
+# Text Tools by NateSoul
+
+A lightweight collection of practical text utilities built with plain HTML, CSS, and vanilla JavaScript. Designed to solve common text problems with a clean UI, instant feedback, and zero dependencies.
+
+Live site:
+[https://texttoolsbynatesoul.netlify.app/](https://texttoolsbynatesoul.netlify.app/)
+
+---
 
 ## Overview
 
-# Dynamic Slug and Excerpt Generator
+**Text Tools by NateSoul** is a small web app that groups multiple focused text tools under a single landing page. Each tool is accessible from the home screen and runs entirely in the browser without frameworks or external libraries.
 
-This JavaScript code is a dynamic utility for generating slugs and excerpts based on user inputs in a web form. It is designed to enhance the user experience when creating content, such as articles or blog posts.
+The goal is simple:
+**fast, useful text tools with no setup and no distractions.**
 
-## Features
+---
 
-- **Slug Generation**: When a title is entered into the "Title" field, the code automatically generates a URL-friendly slug in the "Slug" field. This slug is created by converting the title to lowercase, removing non-alphanumeric characters, and applying customizable transformations such as removing unwanted keywords and replacing spaces with a specified delimiter.
+## Available Tools
 
-- **Excerpt Creation**: When the focus is removed from the "Body" field, the code generates an excerpt in the "Excerpt" field. The excerpt is created by trimming the body text and limiting its length to a specified character count, with an optional ellipsis at the end.
+### 1. Slugifier
 
-- **Customization**: The code allows customization of the slug generation by specifying whether to allow or disallow non-ASCII characters, defining unwanted keywords to be removed from slugs, and selecting the delimiter for slug creation.
+A tool for converting text into clean, URL-safe slugs.
 
-This JavaScript code contains two key functions, `generateSlug` and `makeExcerpt`, for text manipulation. These functions can be integrated into various web applications and services to enhance text processing and formatting.
+#### Use cases
 
-## `generateSlug` Function
+* Blog post URLs
+* CMS slugs
+* SEO-friendly links
+* API endpoints
 
-The `generateSlug` function is used for generating slugs from text, which are typically used in URLs for cleaner and SEO-friendly links. It provides several features:
+#### Features
 
-- **Normalization**: It normalizes the input text by converting it to lowercase, removing non-alphanumeric characters, and dealing with whitespace.
+* Input field for original text
+* Delimiter selection (e.g. dash)
+* Toggle options:
 
-- **Keyword Removal**: You can specify a list of unwanted keywords that should be removed from the slug. These keywords are removed as standalone words.
+  * Remove numbers
+  * Allow Unicode characters
+  * Exclude stop words
+* Built-in stop word list displayed as removable chips
+* Ability to add custom stop words using comma-separated values
+* Live generated slug output
+* Copy-to-clipboard button
+* Reset form action
 
-- **Delimiter Handling**: The function ensures consistent usage of a specified delimiter (default is "-"). It replaces spaces and repeated delimiters with a single delimiter and strips leading and trailing delimiters.
+All transformations happen instantly in the browser.
 
-- **Unicode Support**: It optionally converts non-ASCII characters to their closest ASCII equivalents for compatibility (set `allowUnicode` to `true` to enable this feature).
+---
 
-## Usage:
+### 2. Excerpt Maker
 
-```javascript
-const slug = generateSlug("Sample Slug Generator", false, ["and", "of"], "-");
-```
-## `makeExcerpt` Function
+A tool for generating short excerpts from long-form content.
 
-The `makeExcerpt` function is designed to create excerpts from text, particularly useful for summarizing longer content. Key features include:
+#### Use cases
 
-- **Text Trimming**: It trims the input text to a specified length (default is 50 characters) while ensuring words are not cut off abruptly.
+* Blog previews
+* Meta descriptions
+* Content cards
+* Summaries
 
-## Usage:
+#### Features
 
-```javascript
-const excerpt = makeExcerpt("This is a long piece of text that will be trimmed into an excerpt.");
-```
+* Large text area for original content
+* Character counter (up to 5,000 characters)
+* Target word count slider
+* Excerpt type options:
 
-## Note:
+  * Smart Detection (breaks at sentence boundaries)
+  * Fixed Length (cuts at exact word count)
+* Optional settings:
 
-These functions are versatile and can be used in various web applications, such as content management systems or blog platforms, to automate the generation of slugs for articles and create concise excerpts for previews.
+  * Add ellipsis (...)
+  * Preserve formatting
+* Generated excerpt output
+* Copy-to-clipboard button
+* Statistics:
+
+  * Word count
+  * Character count
+  * Sentence count
+  * Compression percentage
+
+---
+
+## Landing Page / Tool Switcher
+
+The homepage acts as a **tool switcher**, allowing users to select and open any available tool from a single entry point.
+
+There is no account system, onboarding flow, or configuration required. Tools are immediately usable.
+
+---
+
+## Tech Stack
+
+* HTML
+* CSS
+* Vanilla JavaScript
+* No frameworks
+* No build tools
+* No external APIs
+
+The entire app runs client-side.
+
+---
+
+## Design Principles
+
+* Keep tools focused and single-purpose
+* Prefer clarity over feature overload
+* Make everything work instantly
+* Mobile-first and touch-friendly
+* No dependencies unless truly necessary
+
+---
+
+## Deployment
+
+The project is deployed on **Netlify** as a static site.
+
+---
+
+## Author
+
+Built by **NateSoul**
+
+Text Tools by NateSoul is an ongoing experiment in building small, useful tools with clean interfaces and minimal technology.
